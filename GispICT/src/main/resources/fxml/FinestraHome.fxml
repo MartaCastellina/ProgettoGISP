@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="363.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.GispICT.HomeController">
+   <children>
+      <Button fx:id="btnCercaFarmaco" contentDisplay="CENTER" layoutX="322.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleCercaFarmaco" text="Search for a drug">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAggiungi" alignment="CENTER" contentDisplay="CENTER" layoutX="64.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleAggiungi" text="Add new drugs" textAlignment="CENTER">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Label layoutX="212.0" layoutY="14.0" text="DigitalMED" textFill="#061d84">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="188.0" layoutY="65.0" text="What do you want to do?">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnStatistiche" alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="241.0" mnemonicParsing="false" text="Show statistics" textAlignment="CENTER">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnMagazzinoReparti" alignment="CENTER" contentDisplay="CENTER" layoutX="316.0" layoutY="241.0" mnemonicParsing="false" onAction="#handleMostraMagazzino" text="Show wards stocks" textAlignment="CENTER">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
