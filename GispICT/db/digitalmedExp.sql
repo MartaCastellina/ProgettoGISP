@@ -26,12 +26,19 @@ CREATE TABLE IF NOT EXISTS `farmaci` (
   PRIMARY KEY (`IDPharma`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella digitalmed.farmaci: ~3 rows (circa)
+-- Dump dei dati della tabella digitalmed.farmaci: ~10 rows (circa)
 /*!40000 ALTER TABLE `farmaci` DISABLE KEYS */;
 INSERT INTO `farmaci` (`IDPharma`, `Name`, `Conservation`, `Link`, `Reorder`) VALUES
-	(1, 'Oki', '20 C', 'C:\\\\ICT\\Nostro progetto\\Farmaci\\OKI', NULL),
-	(2, 'A', '20C', 'C:\\\\ICT\\Nostro progetto\\Farmaci\\AA', NULL),
-	(3, 'B', '20C', 'asdfg', NULL);
+	(1, 'Oki', '20 ', 'https://www.codifa.it/farmaci/o/oki-granulato-ketoprofene-sale-di-lisina-analgesici-fans', NULL),
+	(2, 'Plasil', '20', 'https://www.codifa.it/farmaci/p/plasil-compressa-metoclopramide-cloridrato-procinetici', NULL),
+	(3, 'Lasix', '20', 'https://www.codifa.it/farmaci/l/lasix-compressa-furosemide-diuretici-dell-ansa', NULL),
+	(4, 'Cardura', '20', 'https://www.codifa.it/farmaci/c/cardura-doxazosin-mesilato-alfabloccanti', NULL),
+	(5, 'Almarytm', '20', 'https://www.codifa.it/farmaci/a/almarytm-compressa-flecainide-acetato-antiaritmici', NULL),
+	(6, 'Deltacortene', '20', 'https://www.codifa.it/farmaci/d/deltacortene-prednisone-corticosteroidi', NULL),
+	(7, 'Cetirizina', '20', 'https://www.codifa.it/farmaci/c/cetirizina-abc-cetirizina-dicloridrato-antiallergici-antistaminici', NULL),
+	(8, 'Coumadin', '20', 'https://www.codifa.it/farmaci/c/coumadin-warfarin-sodico-anticoagulanti-indiretti', NULL),
+	(9, 'Mittoval', '20', 'https://www.codifa.it/farmaci/m/mittoval-compressa-a-rilascio-modificato-alfuzosina-cloridrato-ipertrofia-prostatica-benigna', NULL),
+	(10, 'Tachipirina', '20', 'https://www.codifa.it/farmaci/t/tachipirina-compressa-granulato-supposta-paracetamolo-antipiretici-analgesici-fans', NULL);
 /*!40000 ALTER TABLE `farmaci` ENABLE KEYS */;
 
 -- Dump della struttura di tabella digitalmed.magazzinoreparti
@@ -45,13 +52,26 @@ CREATE TABLE IF NOT EXISTS `magazzinoreparti` (
   PRIMARY KEY (`IDPharma`,`IDWard`,`ExpDate`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella digitalmed.magazzinoreparti: ~4 rows (circa)
+-- Dump dei dati della tabella digitalmed.magazzinoreparti: ~17 rows (circa)
 /*!40000 ALTER TABLE `magazzinoreparti` DISABLE KEYS */;
 INSERT INTO `magazzinoreparti` (`IDWard`, `NameWard`, `IDPharma`, `NamePharma`, `Quantity`, `ExpDate`) VALUES
-	(1, 'Terapia', '1', 'OKI', 1, '2020-04-21'),
-	(1, 'Terapia', '1', 'OKI', 10, '2020-09-05'),
-	(2, 'PS', '1', 'OKI', 20, '2020-10-01'),
-	(1, 'Terapia', '2', 'AA', 5, '2021-01-01');
+	(100, 'Surgery', '1', 'OKI', 1, '2020-07-01'),
+	(100, 'Surgery', '1', 'OKI', 20, '2021-04-01'),
+	(102, 'Emergency department', '1', 'OKI', 20, '2020-10-01'),
+	(103, 'Cardiac Surgery', '1', 'OKI', 10, '2021-03-25'),
+	(105, 'Psychiatry', '1', 'OKI', 5, '2021-01-01'),
+	(102, 'Emergency department', '10', 'Tachipirina', 10, '2020-04-25'),
+	(100, 'Surgery', '3', 'Lasix', 10, '2020-09-01'),
+	(106, 'Pneumology', '3', 'Lasix', 10, '2021-04-01'),
+	(104, 'Neurology', '4', 'Cardura', 1, '2020-07-01'),
+	(106, 'Pneumology', '4', 'Cardura', 5, '2020-10-01'),
+	(101, 'Cardiology', '5', 'Almarytm', 10, '2020-09-05'),
+	(103, 'Cardiac Surgery', '5', 'Almarytm', 10, '2020-09-01'),
+	(104, 'Neurology', '5', 'Almarytm', 10, '2021-01-01'),
+	(102, 'Emergency department', '6', 'Deltacortene', 10, '2021-04-01'),
+	(103, 'Cardiac Surgery', '8', 'Coumadin', 10, '2021-04-01'),
+	(103, 'Cardiac Surgery', '9', 'Mittoval', 2, '2020-07-01'),
+	(106, 'Pneumology', '9', 'Mittoval', 3, '2021-04-01');
 /*!40000 ALTER TABLE `magazzinoreparti` ENABLE KEYS */;
 
 -- Dump della struttura di tabella digitalmed.statistiche

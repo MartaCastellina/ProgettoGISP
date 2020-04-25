@@ -1,7 +1,8 @@
-package it.polito.tdp.GispICT;
 /**
  * Sample Skeleton for 'FinestraHome.fxml' Controller Class
  */
+
+package it.polito.tdp.GispICT;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,6 +30,12 @@ public class HomeController {
     @FXML // fx:id="btnMagazzinoReparti"
     private Button btnMagazzinoReparti; // Value injected by FXMLLoader
 
+    @FXML // fx:id="btnPreleva"
+    private Button btnPreleva; // Value injected by FXMLLoader
+
+    @FXML // fx:id="btnInScadenza"
+    private Button btnInScadenza; // Value injected by FXMLLoader
+
     @FXML
     void handleAggiungi(ActionEvent event) {
 
@@ -40,7 +47,17 @@ public class HomeController {
     }
 
     @FXML
+    void handleInScadenza(ActionEvent event) {
+
+    }
+
+    @FXML
     void handleMostraMagazzino(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handlePreleva(ActionEvent event) {
 
     }
 
@@ -50,6 +67,8 @@ public class HomeController {
         assert btnAggiungi != null : "fx:id=\"btnAggiungi\" was not injected: check your FXML file 'FinestraHome.fxml'.";
         assert btnStatistiche != null : "fx:id=\"btnStatistiche\" was not injected: check your FXML file 'FinestraHome.fxml'.";
         assert btnMagazzinoReparti != null : "fx:id=\"btnMagazzinoReparti\" was not injected: check your FXML file 'FinestraHome.fxml'.";
+        assert btnPreleva != null : "fx:id=\"btnPreleva\" was not injected: check your FXML file 'FinestraHome.fxml'.";
+        assert btnInScadenza != null : "fx:id=\"btnInScadenza\" was not injected: check your FXML file 'FinestraHome.fxml'.";
 
     }
 }

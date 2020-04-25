@@ -1,4 +1,4 @@
-package it.polito.tdp.GispICT;
+package it.polito.tdp.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

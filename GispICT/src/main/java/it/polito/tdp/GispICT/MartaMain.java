@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Main {
+public class MartaMain {
 	public static void main(String[] args) {
         EntryPoint.main(args);
         String jdbcURL="jdbc:mysql://localhost/digitalmed?user=root&password=root";
