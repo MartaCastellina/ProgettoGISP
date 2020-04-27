@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="363.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.GispICT.InserisciFarmacoController">
+   <children>
+      <Label layoutX="212.0" layoutY="14.0" text="DigitalMED" textFill="#061d84">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtIdFarmaco" layoutX="106.0" layoutY="64.0" />
+      <Label layoutX="25.0" layoutY="68.0" text="ID Farmaco:" />
+      <TextField fx:id="txtNomeFarmaco" editable="false" layoutX="372.0" layoutY="64.0" />
+      <Label layoutX="280.0" layoutY="68.0" text="Nome Farmaco:" />
+      <Spinner fx:id="qty" layoutX="106.0" layoutY="118.0" />
+      <Label layoutX="25.0" layoutY="122.0" text="Quantity:" />
+      <DatePicker fx:id="date" layoutX="106.0" layoutY="169.0" />
+      <Label layoutX="15.0" layoutY="173.0" text="Expiration Date:" />
+      <ComboBox fx:id="comboReparti" layoutX="105.0" layoutY="219.0" prefWidth="150.0" promptText="Select your ward" />
+      <Label layoutX="33.0" layoutY="223.0" text="Ward:" />
+      <Button fx:id="btnBack" layoutX="35.0" layoutY="296.0" mnemonicParsing="false" onAction="#handleGoBack" text="Go back to the home" />
+      <Button fx:id="btnConfirm" layoutX="416.0" layoutY="296.0" mnemonicParsing="false" onAction="#handleConfirm" text="Confirm" />
+   </children>
+</AnchorPane>
