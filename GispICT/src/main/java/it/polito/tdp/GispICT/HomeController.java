@@ -7,6 +7,7 @@ package it.polito.tdp.GispICT;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +15,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class HomeController {
 
+	MartaModel model;
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -45,17 +48,29 @@ public class HomeController {
     @FXML
     void handleAggiungi(ActionEvent event) throws IOException {
 
-    	Parent secondaSchermataParent=FXMLLoader.load(getClass().getResource("/fxml/InserisciFarmaco.fxml"));
+    	//Passo il model su cui sto lavorando    	
+    	
+    	FXMLLoader loader=new FXMLLoader();
+    	loader.setLocation(getClass().getResource("/fxml/InserisciFarmaco.fxml"));
+    	Parent secondaSchermataParent=loader.load();
+    	
     	Scene secondaSchermataScene=new Scene(secondaSchermataParent);
-   //Questa riga prende le informazioni dello stage
+    	//Accediamo al controller e chiamiamo metodo, prende il controller da Scene2
+    	InserisciFarmacoController controller= loader.getController();
+    	controller.setModel(this.model);;
+    	
+    	//Questa riga prende le informazioni dello stage
     	Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
     	window.setScene(secondaSchermataScene);
     	window.show();
+    	
+    
     }
 
     @FXML
     void handleCercaFarmaco(ActionEvent event) throws IOException {
-
+//qui bisogna poi passare il model
+    	
     	Parent secondaSchermataParent=FXMLLoader.load(getClass().getResource("/fxml/CercaFarmaco.fxml"));
     	Scene secondaSchermataScene=new Scene(secondaSchermataParent);
    //Questa riga prende le informazioni dello stage
@@ -89,4 +104,9 @@ public class HomeController {
         assert btnInScadenza != null : "fx:id=\"btnInScadenza\" was not injected: check your FXML file 'FinestraHome.fxml'.";
 
     }
+
+	public void setModel(MartaModel model) {
+		this.model=model;
+		
+	}
 }

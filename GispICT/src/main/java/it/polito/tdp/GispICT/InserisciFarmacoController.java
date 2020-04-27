@@ -6,6 +6,8 @@ package it.polito.tdp.GispICT;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class InserisciFarmacoController {
+	private MartaModel model;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -51,6 +54,11 @@ public class InserisciFarmacoController {
 
     @FXML
     void handleConfirm(ActionEvent event) {
+    	   	
+    	Reparto selezionato=(Reparto) comboReparti.getValue();
+    	System.out.println(selezionato.toString());  	
+    	model.setRepartoSelezionato(selezionato);
+   	
 
     }
 
@@ -64,16 +72,30 @@ public class InserisciFarmacoController {
     	window.show();
 
     }
+   
+    void setCombo() {
+    	List reparti=new ArrayList <Reparto>();
+    	reparti=model.getAllReparti();
+    	comboReparti.getItems().addAll(reparti);
+    }
+
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
-        assert txtIdFarmaco != null : "fx:id=\"txtIdFarmaco\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
-        assert txtNomeFarmaco != null : "fx:id=\"txtNomeFarmaco\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
-        assert qty != null : "fx:id=\"qty\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
-        assert date != null : "fx:id=\"date\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
-        assert comboReparti != null : "fx:id=\"comboReparti\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
-        assert btnBack != null : "fx:id=\"btnBack\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
-        assert btnConfirm != null : "fx:id=\"btnConfirm\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
-
+    	 assert txtIdFarmaco != null : "fx:id=\"txtIdFarmaco\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
+         assert txtNomeFarmaco != null : "fx:id=\"txtNomeFarmaco\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
+         assert qty != null : "fx:id=\"qty\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
+         assert date != null : "fx:id=\"date\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
+         assert comboReparti != null : "fx:id=\"comboReparti\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
+         assert btnBack != null : "fx:id=\"btnBack\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
+         assert btnConfirm != null : "fx:id=\"btnConfirm\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
+        
     }
+
+	public void setModel(MartaModel model) {
+		 this.model=model;
+		 
+         setCombo();
+		
+	}
 }

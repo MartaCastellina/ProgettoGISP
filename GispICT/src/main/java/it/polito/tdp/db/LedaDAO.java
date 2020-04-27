@@ -1,4 +1,4 @@
-package it.polito.tdp.GispICT;
+package it.polito.tdp.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import it.polito.tdp.GispICT.FarmacoNelReparto;
 public class LedaDAO {
 
 		public List<FarmacoNelReparto>listaReparti(int codice){

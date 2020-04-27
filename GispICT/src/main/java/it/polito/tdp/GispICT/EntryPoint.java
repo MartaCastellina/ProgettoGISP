@@ -2,9 +2,13 @@ package it.polito.tdp.GispICT;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
@@ -12,10 +16,15 @@ public class EntryPoint extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/FinestraHome.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FinestraHome.fxml"));
+		AnchorPane root = (AnchorPane)loader.load();
+		HomeController controller = loader.getController();
+		MartaModel model = new MartaModel();
+		controller.setModel(model);
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
+        
         
         stage.setTitle("DigitalMED");
         stage.setScene(scene);

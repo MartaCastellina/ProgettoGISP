@@ -15,6 +15,18 @@ public class Reparto {
 	public void setRID(int rID) {
 		RID = rID;
 	}
+	public Reparto(String nome, int rID) {
+		super();
+		Nome = nome;
+		RID = rID;
+	}
+	public Reparto() {
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return  "[" + RID + "] "+Nome;
+	}
 	
 
 }
