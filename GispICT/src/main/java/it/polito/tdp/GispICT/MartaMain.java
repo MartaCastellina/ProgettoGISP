@@ -16,19 +16,21 @@ import java.util.TimerTask;
 import javax.swing.plaf.synth.SynthScrollBarUI;
 
 import it.polito.tdp.db.DBConnectionMarta;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 
 public class MartaMain {
 	public static void main(String[] args) {
         EntryPoint.main(args);        
+       
         	
 			MartaModel model=new MartaModel(); //non posso fare le prove qui per cose del controller 	
-			TimerTask task = new TimerTask() { //o new TimerTask
+			TimerTask task = new TimerTask() { 
+				List<Arduino> result = new ArrayList<Arduino>();
 				
-				
-				String sql = "SELECT NameWard, IDWard \n" + 
-						"FROM magazzinoreparti \n" + 
-						"GROUP BY IDWard";				
-				List<Reparto> result = new ArrayList<Reparto>();
+				String sql = "SELECT IDArduino,TempMAX " + 
+						"FROM arduino ";				
+				boolean flag= false;
 				
 				
 		        @Override
@@ -40,15 +42,24 @@ public class MartaMain {
 		    			ResultSet res = st.executeQuery() ;
 		    			
 		    			while(res.next()) {
-		    				result.add(new Reparto(res.getString("NameWard"), res.getInt("IDWard"))) ;
+		    				result.add(new Arduino(res.getInt("IDArduino"), res.getInt("TempMAX"))) ;
 		    				conn.close();
-		    				System.out.println(result) ;
+		    				System.out.println(result.toString()) ;
 		    				}
 		            } catch (Exception e) {
 		                // TODO Auto-generated catch block
 		                e.printStackTrace();
 		                
 		            }
+		           
+		            for (Arduino a:result) {
+		            	if (a.getTemperatura()==100) {
+		            		flag=true;
+		            		// controller.setFlag(flag);
+		            		System.out.println("ATT");
+		            	}
+		            }
+		            
 		        }
 		    };
 		    Timer timer = new Timer(true);// true to run timer as daemon thread
@@ -62,8 +73,7 @@ public class MartaMain {
 		    }
 		    timer.cancel();
 			
-		}
-    
+	}
     }
 	
 

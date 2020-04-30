@@ -3,7 +3,15 @@ package it.polito.tdp.GispICT;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import it.polito.tdp.db.DBConnectionMarta;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,7 +26,7 @@ public class EntryPoint extends Application {
     public void start(Stage stage) throws Exception {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FinestraHome.fxml"));
 		AnchorPane root = (AnchorPane)loader.load();
-		HomeController controller = loader.getController();
+		final HomeController controller = loader.getController();
 		MartaModel model = new MartaModel();
 		controller.setModel(model);
         
@@ -29,6 +37,11 @@ public class EntryPoint extends Application {
         stage.setTitle("DigitalMED");
         stage.setScene(scene);
         stage.show();
+        
+        
+		
+	
+	
     }
 
     /**

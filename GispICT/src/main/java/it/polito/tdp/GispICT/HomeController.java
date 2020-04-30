@@ -15,11 +15,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class HomeController {
 
+	
 	MartaModel model;
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -44,6 +46,8 @@ public class HomeController {
 
     @FXML // fx:id="btnInScadenza"
     private Button btnInScadenza; // Value injected by FXMLLoader
+    @FXML
+    private TextField textTemperatura;
 
     @FXML
     void handleAggiungi(ActionEvent event) throws IOException {
@@ -102,11 +106,19 @@ public class HomeController {
         assert btnMagazzinoReparti != null : "fx:id=\"btnMagazzinoReparti\" was not injected: check your FXML file 'FinestraHome.fxml'.";
         assert btnPreleva != null : "fx:id=\"btnPreleva\" was not injected: check your FXML file 'FinestraHome.fxml'.";
         assert btnInScadenza != null : "fx:id=\"btnInScadenza\" was not injected: check your FXML file 'FinestraHome.fxml'.";
-
+        assert textTemperatura != null : "fx:id=\"textTemperatura\" was not injected: check your FXML file 'FinestraHome.fxml'.";
     }
 
 	public void setModel(MartaModel model) {
 		this.model=model;
 		
 	}
+	/** +++++++++++++++++++++ MODIFICARE QUESTO ++++++++++++++++
+	public void setFlag(boolean flag) {
+		
+		if (flag==true) {
+			textTemperatura.setText("ATTENZIONE TEMPERATURA!");
+		}
+	}
+	*/
 }
