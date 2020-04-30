@@ -16,6 +16,21 @@
 CREATE DATABASE IF NOT EXISTS `digitalmed` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `digitalmed`;
 
+-- Dump della struttura di tabella digitalmed.arduino
+CREATE TABLE IF NOT EXISTS `arduino` (
+  `IDArduino` int(11) NOT NULL,
+  `Temperatura` int(11) DEFAULT NULL,
+  `IDReparto` int(11) DEFAULT NULL,
+  `TempMAX` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IDArduino`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dump dei dati della tabella digitalmed.arduino: ~0 rows (circa)
+/*!40000 ALTER TABLE `arduino` DISABLE KEYS */;
+INSERT INTO `arduino` (`IDArduino`, `Temperatura`, `IDReparto`, `TempMAX`) VALUES
+	(123, 10, 1, 50);
+/*!40000 ALTER TABLE `arduino` ENABLE KEYS */;
+
 -- Dump della struttura di tabella digitalmed.farmaci
 CREATE TABLE IF NOT EXISTS `farmaci` (
   `IDPharma` int(11) NOT NULL DEFAULT 0,
@@ -26,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `farmaci` (
   PRIMARY KEY (`IDPharma`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella digitalmed.farmaci: ~10 rows (circa)
+-- Dump dei dati della tabella digitalmed.farmaci: ~9 rows (circa)
 /*!40000 ALTER TABLE `farmaci` DISABLE KEYS */;
 INSERT INTO `farmaci` (`IDPharma`, `Name`, `Conservation`, `Link`, `Reorder`) VALUES
 	(1, 'Oki', '20 ', 'https://www.codifa.it/farmaci/o/oki-granulato-ketoprofene-sale-di-lisina-analgesici-fans', NULL),
@@ -49,29 +64,30 @@ CREATE TABLE IF NOT EXISTS `magazzinoreparti` (
   `NamePharma` varchar(50) DEFAULT NULL,
   `Quantity` int(11) DEFAULT NULL,
   `ExpDate` date NOT NULL,
+  `IdArduino` int(11) DEFAULT NULL,
   PRIMARY KEY (`IDPharma`,`IDWard`,`ExpDate`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dump dei dati della tabella digitalmed.magazzinoreparti: ~17 rows (circa)
 /*!40000 ALTER TABLE `magazzinoreparti` DISABLE KEYS */;
-INSERT INTO `magazzinoreparti` (`IDWard`, `NameWard`, `IDPharma`, `NamePharma`, `Quantity`, `ExpDate`) VALUES
-	(100, 'Surgery', '1', 'OKI', 1, '2020-07-01'),
-	(100, 'Surgery', '1', 'OKI', 20, '2021-04-01'),
-	(102, 'Emergency department', '1', 'OKI', 20, '2020-10-01'),
-	(103, 'Cardiac Surgery', '1', 'OKI', 10, '2021-03-25'),
-	(105, 'Psychiatry', '1', 'OKI', 5, '2021-01-01'),
-	(102, 'Emergency department', '10', 'Tachipirina', 10, '2020-04-25'),
-	(100, 'Surgery', '3', 'Lasix', 10, '2020-09-01'),
-	(106, 'Pneumology', '3', 'Lasix', 10, '2021-04-01'),
-	(104, 'Neurology', '4', 'Cardura', 1, '2020-07-01'),
-	(106, 'Pneumology', '4', 'Cardura', 5, '2020-10-01'),
-	(101, 'Cardiology', '5', 'Almarytm', 10, '2020-09-05'),
-	(103, 'Cardiac Surgery', '5', 'Almarytm', 10, '2020-09-01'),
-	(104, 'Neurology', '5', 'Almarytm', 10, '2021-01-01'),
-	(102, 'Emergency department', '6', 'Deltacortene', 10, '2021-04-01'),
-	(103, 'Cardiac Surgery', '8', 'Coumadin', 10, '2021-04-01'),
-	(103, 'Cardiac Surgery', '9', 'Mittoval', 2, '2020-07-01'),
-	(106, 'Pneumology', '9', 'Mittoval', 3, '2021-04-01');
+INSERT INTO `magazzinoreparti` (`IDWard`, `NameWard`, `IDPharma`, `NamePharma`, `Quantity`, `ExpDate`, `IdArduino`) VALUES
+	(100, 'Surgery', '1', 'OKI', 1, '2020-07-01', NULL),
+	(100, 'Surgery', '1', 'OKI', 20, '2021-04-01', NULL),
+	(102, 'Emergency department', '1', 'OKI', 20, '2020-10-01', NULL),
+	(103, 'Cardiac Surgery', '1', 'OKI', 10, '2021-03-25', NULL),
+	(105, 'Psychiatry', '1', 'OKI', 5, '2021-01-01', NULL),
+	(102, 'Emergency department', '10', 'Tachipirina', 10, '2020-04-25', NULL),
+	(100, 'Surgery', '3', 'Lasix', 10, '2020-09-01', NULL),
+	(106, 'Pneumology', '3', 'Lasix', 10, '2021-04-01', NULL),
+	(104, 'Neurology', '4', 'Cardura', 1, '2020-07-01', NULL),
+	(106, 'Pneumology', '4', 'Cardura', 5, '2020-10-01', NULL),
+	(101, 'Cardiology', '5', 'Almarytm', 10, '2020-09-05', NULL),
+	(103, 'Cardiac Surgery', '5', 'Almarytm', 10, '2020-09-01', NULL),
+	(104, 'Neurology', '5', 'Almarytm', 10, '2021-01-01', NULL),
+	(102, 'Emergency department', '6', 'Deltacortene', 10, '2021-04-01', NULL),
+	(103, 'Cardiac Surgery', '8', 'Coumadin', 10, '2021-04-01', NULL),
+	(103, 'Cardiac Surgery', '9', 'Mittoval', 2, '2020-07-01', NULL),
+	(106, 'Pneumology', '9', 'Mittoval', 3, '2021-04-01', NULL);
 /*!40000 ALTER TABLE `magazzinoreparti` ENABLE KEYS */;
 
 -- Dump della struttura di tabella digitalmed.statistiche
@@ -82,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `statistiche` (
   PRIMARY KEY (`IDPharma`,`Withdrawal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dump dei dati della tabella digitalmed.statistiche: ~1 rows (circa)
+-- Dump dei dati della tabella digitalmed.statistiche: ~0 rows (circa)
 /*!40000 ALTER TABLE `statistiche` DISABLE KEYS */;
 INSERT INTO `statistiche` (`IDPharma`, `Withdrawal`, `Quantity`) VALUES
 	(1, '2020-04-21', 4);
