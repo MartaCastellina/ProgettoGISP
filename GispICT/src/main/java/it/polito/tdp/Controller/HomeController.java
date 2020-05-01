@@ -73,19 +73,24 @@ public class HomeController {
 
     @FXML
     void handleCercaFarmaco(ActionEvent event) throws IOException {
-//qui bisogna poi passare il model
+    	//qui bisogna poi passare il model
     	
     	Parent secondaSchermataParent=FXMLLoader.load(getClass().getResource("/fxml/CercaFarmaco.fxml"));
     	Scene secondaSchermataScene=new Scene(secondaSchermataParent);
-   //Questa riga prende le informazioni dello stage
+    	//Questa riga prende le informazioni dello stage
     	Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
     	window.setScene(secondaSchermataScene);
     	window.show();
     }
 
     @FXML
-    void handleInScadenza(ActionEvent event) {
-
+    void handleInScadenza(ActionEvent event) throws IOException {
+    	Parent secondaSchermataParent=FXMLLoader.load(getClass().getResource("/fxml/FarmaciInScadenza.fxml"));
+    	Scene secondaSchermataScene=new Scene(secondaSchermataParent);
+    	//Questa riga prende le informazioni dello stage
+    	Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+    	window.setScene(secondaSchermataScene);
+    	window.show();
     }
 
     @FXML

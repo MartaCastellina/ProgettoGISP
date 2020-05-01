@@ -33,6 +33,7 @@ import javafx.stage.Stage;
 
 public class InserisciFarmacoController {
 	private MartaModel model;
+	
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -117,10 +118,7 @@ public class InserisciFarmacoController {
 			allertText.setText("ERRORE DI CONNESSIONE AL DATABASE!");
 		}
     	
-    	
-    	
-    	
-    	
+	
     	
     	//Da qui in poi è per passare alla prossima Scena
     	Parent secondaSchermataParent=FXMLLoader.load(getClass().getResource("/fxml/FarmacoInserito.fxml"));
@@ -182,9 +180,10 @@ public class InserisciFarmacoController {
     }
 
 	public void setModel(MartaModel model) {
-		 this.model=model;
+		this.model=new MartaModel(); 
+		this.model=model;
 		 
-         setCombo();
+         setCombo(); //Il problema è questo quando faccio passaggio da una pag all'altra per tornare indietro
 		
 	}
 }
