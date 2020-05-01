@@ -1,16 +1,17 @@
 package it.polito.tdp.GispICT;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class FarmacoNelReparto {
 	private String NomeF;
-	private Date Scadenza;
+	private LocalDate Scadenza;
     private int FID;
     private int Quantita;
     private String NomeR;
 	private int RID;
 	
-	public FarmacoNelReparto(String nomeF, Date scadenza, int fID, int quantita, String nomeR, int rID) {
+	public FarmacoNelReparto(String nomeF, LocalDate scadenza, int fID, int quantita, String nomeR, int rID) {
 		super();
 		NomeF = nomeF;
 		Scadenza = scadenza;
@@ -19,10 +20,13 @@ public class FarmacoNelReparto {
 		NomeR = nomeR;
 		RID = rID;
 	}
-	public Date getScadenza() {
+	
+
+
+	public LocalDate getScadenza() {
 		return Scadenza;
 	}
-	public void setScadenza(Date scadenza) {
+	public void setScadenza(LocalDate scadenza) {
 		Scadenza = scadenza;
 	}
 	public int getFID() {

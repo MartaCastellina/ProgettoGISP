@@ -6,11 +6,14 @@ package it.polito.tdp.Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.GispICT.Farmaco;
+import it.polito.tdp.GispICT.FarmacoNelReparto;
 import it.polito.tdp.GispICT.MartaModel;
 import it.polito.tdp.GispICT.Reparto;
 
@@ -43,8 +46,9 @@ public class InserisciFarmacoController {
     @FXML // fx:id="txtNomeFarmaco"
     private TextField txtNomeFarmaco; // Value injected by FXMLLoader
 
-    @FXML // fx:id="qty"
-    private Spinner<?> qty; // Value injected by FXMLLoader
+    @FXML // fx:id="txtQty"
+    private TextField txtQty; // Value injected by FXMLLoader
+
 
     @FXML // fx:id="date"
     private DatePicker date; // Value injected by FXMLLoader
@@ -66,10 +70,8 @@ public class InserisciFarmacoController {
     @FXML
     void handleConfirm(ActionEvent event) throws IOException {
     	   	
-    	Reparto selezionato=(Reparto) comboReparti.getValue();
-    	//System.out.println(selezionato.toString());  	
-    	//model.setRepartoSelezionato(selezionato);
-    	
+    	Reparto repartoSelezionato=(Reparto) comboReparti.getValue();
+    	    	
     	
     	try {
 
@@ -82,6 +84,9 @@ public class InserisciFarmacoController {
 				allertText.setText("Select a ward");
 				return;
 			}
+			if (txtQty.getText().isEmpty()) {
+				allertText.setText("Insert qty");
+			}    	
 		
 
 			// Prendo l'ID in input
@@ -96,26 +101,15 @@ public class InserisciFarmacoController {
 			}
 
 			txtNomeFarmaco.setText(farmaco.getNome());
+			String nomeFarmaco=farmaco.getNome();
+			int qty=Integer.parseInt(txtQty.getText());
+			LocalDate dataScadenza=date.getValue();
 			
-/*
-			// Ottengo il nome del corso
-			Corso corso = comboCorso.getValue();
-
-			// Controllo se lo studente Ã¨ giÃ  iscritto al corso
-			if (model.isStudenteIscrittoACorso(studente, corso)) {
-				txtResult.appendText("Studente giÃ  iscritto a questo corso");
-				return;
-			}
-
-			// Iscrivo lo studente al corso.
-			// Controllo che l'inserimento vada a buon fine
-			if (!model.inscriviStudenteACorso(studente, corso)) {
-				txtResult.appendText("Errore durante l'iscrizione al corso");
-				return;
-			} else {
-				txtResult.appendText("Studente iscritto al corso!");
-			}
-			*/
+			FarmacoNelReparto farmacoDaInserire=new FarmacoNelReparto(farmaco.getNome(),dataScadenza,idFarmaco,qty,
+					repartoSelezionato.getNome(),repartoSelezionato.getRID());
+			model.aggiungiFarmacoNelReparto(farmacoDaInserire);
+			
+			
 
 		} catch (NumberFormatException e) {
 			allertText.setText("Insert an IDPharma correct");
@@ -178,7 +172,7 @@ public class InserisciFarmacoController {
     void initialize() {
     	 assert txtIdFarmaco != null : "fx:id=\"txtIdFarmaco\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
          assert txtNomeFarmaco != null : "fx:id=\"txtNomeFarmaco\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
-         assert qty != null : "fx:id=\"qty\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
+         assert txtQty != null : "fx:id=\"txtQty\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
          assert date != null : "fx:id=\"date\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
          assert comboReparti != null : "fx:id=\"comboReparti\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
          assert btnBack != null : "fx:id=\"btnBack\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";

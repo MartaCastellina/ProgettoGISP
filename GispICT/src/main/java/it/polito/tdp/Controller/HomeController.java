@@ -47,8 +47,7 @@ public class HomeController {
 
     @FXML // fx:id="btnInScadenza"
     private Button btnInScadenza; // Value injected by FXMLLoader
-    @FXML
-    private TextField textTemperatura;
+   
 
     @FXML
     void handleAggiungi(ActionEvent event) throws IOException {
@@ -62,7 +61,7 @@ public class HomeController {
     	Scene secondaSchermataScene=new Scene(secondaSchermataParent);
     	//Accediamo al controller e chiamiamo metodo, prende il controller da Scene2
     	InserisciFarmacoController controller= loader.getController();
-    	controller.setModel(this.model);;
+    	controller.setModel(this.model);
     	
     	//Questa riga prende le informazioni dello stage
     	Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -107,7 +106,7 @@ public class HomeController {
         assert btnMagazzinoReparti != null : "fx:id=\"btnMagazzinoReparti\" was not injected: check your FXML file 'FinestraHome.fxml'.";
         assert btnPreleva != null : "fx:id=\"btnPreleva\" was not injected: check your FXML file 'FinestraHome.fxml'.";
         assert btnInScadenza != null : "fx:id=\"btnInScadenza\" was not injected: check your FXML file 'FinestraHome.fxml'.";
-        assert textTemperatura != null : "fx:id=\"textTemperatura\" was not injected: check your FXML file 'FinestraHome.fxml'.";
+        
     }
 
 	public void setModel(MartaModel model) {

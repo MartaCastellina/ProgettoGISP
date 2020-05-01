@@ -23,7 +23,7 @@ public class LedaDAO {
 				ResultSet res = st.executeQuery() ;
 				
 				while(res.next()) {
-					result.add( new FarmacoNelReparto(res.getString("NamePharma"), res.getDate("ExpDate"),res.getInt(codice), res.getInt("Quantity"), res.getString("NameWard"), res.getInt("IDWard"))) ;
+					result.add( new FarmacoNelReparto(res.getString("NamePharma"), res.getDate("ExpDate").toLocalDate(),res.getInt(codice), res.getInt("Quantity"), res.getString("NameWard"), res.getInt("IDWard"))) ;
 				}
 				
 				conn.close();

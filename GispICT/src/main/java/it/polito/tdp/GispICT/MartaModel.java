@@ -38,6 +38,10 @@ public class MartaModel {
 		}
 		return null;
 	}
+	public void aggiungiFarmacoNelReparto(FarmacoNelReparto farmacoDaInserire) {
+		mDAO.aggiungiNuovoFarmaco(farmacoDaInserire);
+		
+	}
 	
 	
 	

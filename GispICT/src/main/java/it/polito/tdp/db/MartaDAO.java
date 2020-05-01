@@ -1,6 +1,7 @@
 package it.polito.tdp.db;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.polito.tdp.GispICT.Farmaco;
+import it.polito.tdp.GispICT.FarmacoNelReparto;
 import it.polito.tdp.GispICT.Reparto;
 
 public class MartaDAO {
@@ -15,7 +17,7 @@ public class MartaDAO {
 	public List<Reparto>listaReparti(){
 		String sql = "SELECT NameWard, IDWard \n" + 
 				"FROM magazzinoreparti \n" + 
-				"GROUP BY IDWard";
+				"GROUP BY IDWard, NameWard";
 
 		
 		List<Reparto> result = new ArrayList<Reparto>();
@@ -66,5 +68,33 @@ public class MartaDAO {
 			e.printStackTrace();
 			return null ;
 		}
+	}
+
+	public void aggiungiNuovoFarmaco(FarmacoNelReparto farmacoDaInserire) {
+		String sql = "INSERT INTO magazzinoreparti (IDWard,NameWard,IDPharma,NamePharma,Quantity,ExpDate) " + 
+				"VALUES (?,?,?,?,?,?) ";
+
+		
+		Connection conn = DBConnectionMarta.getConnection() ;
+		
+		try {
+			PreparedStatement st = conn.prepareStatement(sql) ;
+			
+			st.setInt(1, farmacoDaInserire.getRID());
+			st.setString(2, farmacoDaInserire.getNomeR());
+			st.setInt(3,farmacoDaInserire.getFID());
+			st.setString(4,farmacoDaInserire.getNomeF());
+			st.setInt(5, farmacoDaInserire.getQuantita());
+			st.setDate(6, Date.valueOf(farmacoDaInserire.getScadenza()));
+			st.executeUpdate();
+			System.out.println("aggiunto");
+			conn.close();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		
 	}
 }
