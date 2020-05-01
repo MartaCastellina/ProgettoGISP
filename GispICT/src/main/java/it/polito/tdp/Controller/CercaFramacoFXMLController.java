@@ -2,7 +2,7 @@
  * Sample Skeleton for 'CercaFarmaco.fxml' Controller Class
  */
 
-package it.polito.tdp.GispICT;
+package it.polito.tdp.Controller;
 
 import java.net.URL;
 import java.sql.Connection;

@@ -2,12 +2,13 @@
  * Sample Skeleton for 'FinestraHome.fxml' Controller Class
  */
 
-package it.polito.tdp.GispICT;
+package it.polito.tdp.Controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.GispICT.MartaModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

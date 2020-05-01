@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import it.polito.tdp.Controller.HomeController;
 import it.polito.tdp.db.DBConnectionMarta;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -37,9 +38,6 @@ public class EntryPoint extends Application {
         stage.setTitle("DigitalMED");
         stage.setScene(scene);
         stage.show();
-        
-        
-		
 	
 	
     }
