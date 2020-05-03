@@ -97,4 +97,31 @@ public class MartaDAO {
 		}
 		
 	}
+
+	public String getElencoScadenza(Reparto reparto) {
+		String result="";
+		
+		String sql = "SELECT IDPharma,NamePharma, ExpDate " + 
+				"FROM magazzinoreparti " + 
+				"WHERE IDWard=? AND ExpDate>'2020-05-31' AND ExpDate < '2020-07-01' ";
+	
+		Connection conn = DBConnectionMarta.getConnection() ;
+		
+		try {
+			PreparedStatement st = conn.prepareStatement(sql) ;
+			st.setInt(1, reparto.getRID());
+			ResultSet res = st.executeQuery() ;
+			
+			while(res.next()) {
+				result+=" ["+res.getInt("IDPharma")+"] "+res.getString("NamePharma")+" - Exp: "+res.getDate("ExpDate")+"\n";
+			}
+			
+			conn.close();
+			return result ;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null ;
+		}
+	}
 }

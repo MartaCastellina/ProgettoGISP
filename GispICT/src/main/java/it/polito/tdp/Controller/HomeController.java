@@ -99,8 +99,13 @@ public class HomeController {
     }
 
     @FXML
-    void handlePreleva(ActionEvent event) {
-
+    void handlePreleva(ActionEvent event) throws IOException {
+    	Parent secondaSchermataParent=FXMLLoader.load(getClass().getResource("/fxml/PrelevaFarmaco.fxml"));
+    	Scene secondaSchermataScene=new Scene(secondaSchermataParent);
+    	//Questa riga prende le informazioni dello stage
+    	Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+    	window.setScene(secondaSchermataScene);
+    	window.show();
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete

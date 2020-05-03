@@ -2,8 +2,9 @@
  * Sample Skeleton for 'CercaFarmaco.fxml' Controller Class
  */
 
-package it.polito.tdp.GispICT;
-import it.polito.tdp.GispICT.LedaDAO;
+package it.polito.tdp.Controller;
+import it.polito.tdp.GispICT.FarmacoNelReparto;
+import it.polito.tdp.db.LedaDAO;
 
 import java.io.IOException;
 import java.net.URL;
