@@ -1,6 +1,7 @@
 package it.polito.tdp.GispICT;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.Date;
 
 import javafx.beans.property.IntegerProperty;
@@ -9,7 +10,7 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.beans.value.ObservableValue;
 
-public class FarmacoNelReparto {
+public class FarmacoNelReparto implements Comparable<FarmacoNelReparto> {
 	private StringProperty NomeF1;
 	private String NomeF;
 	private LocalDate Scadenza;
@@ -62,6 +63,7 @@ public class FarmacoNelReparto {
 	public void setRID(int rID) {
 		RID = rID;
 	}
+
 	@Override
 	public String toString() {
 		return  NomeF + ","
@@ -71,7 +73,15 @@ public class FarmacoNelReparto {
 
 	public String getNomeF() {
 		// TODO Auto-generated method stub
-		return null;
+		return NomeF;
 	}
+	@Override
+	public int compareTo(FarmacoNelReparto f) {
+		int result= this.NomeF.compareTo(f.getNomeF());
+		if(this.NomeF.equals(f.getNomeF()))
+			{return Scadenza.compareTo(f.Scadenza);}
+		return result;
+	}
+	
 	
 }

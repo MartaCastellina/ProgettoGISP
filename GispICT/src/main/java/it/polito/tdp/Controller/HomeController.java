@@ -61,7 +61,7 @@ public class HomeController {
     	Scene secondaSchermataScene=new Scene(secondaSchermataParent);
     	//Accediamo al controller e chiamiamo metodo, prende il controller da Scene2
     	InserisciFarmacoController controller= loader.getController();
-    	controller.setModel(this.model);
+    	//controller.setModel(this.model);  QUI ERA IL PROBLEMA 
     	
     	//Questa riga prende le informazioni dello stage
     	Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -75,7 +75,7 @@ public class HomeController {
     void handleCercaFarmaco(ActionEvent event) throws IOException {
     	//qui bisogna poi passare il model
     	
-    	Parent secondaSchermataParent=FXMLLoader.load(getClass().getResource("/fxml/CercaFarmaco.fxml"));
+    	Parent secondaSchermataParent=FXMLLoader.load(getClass().getResource("/fxml/CercaFarmacoLettura.fxml"));
     	Scene secondaSchermataScene=new Scene(secondaSchermataParent);
     	//Questa riga prende le informazioni dello stage
     	Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();

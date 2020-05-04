@@ -78,4 +78,49 @@ public class LedaDAO {
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-	}}}}
+	}			
+		}
+			}
+		
+		public String riordino(String s) {
+			   int qdisp=0;
+			   int rio=0;
+			   String sql= "SELECT SUM(Quantity) As Result FROM magazzinoreparti WHERE NamePharma=?";
+			   String sql1="SELECT Reorder FROM farmaci WHERE NAME=?";
+			Connection conn = DBConnection.getConnection() ;
+			   
+			   try {
+			    PreparedStatement st = conn.prepareStatement(sql) ;
+			    st.setString(1,s);
+			    ResultSet res = st.executeQuery();
+			    while(res.next()) {
+			     qdisp= res.getInt("Result");
+			     System.out.format("disp"+qdisp);
+			    
+			    }}catch (SQLException e) {
+			     // TODO Auto-generated catch block
+			     e.printStackTrace(); 
+			     }
+			   try {
+			    PreparedStatement st = conn.prepareStatement(sql1) ;
+			    st.setString(1,s);
+			    ResultSet res = st.executeQuery();
+			    while(res.next()) {
+			     rio= res.getInt("Reorder");
+			     System.out.format("rio"+rio);
+			    
+			    }}catch (SQLException e) {
+			     // TODO Auto-generated catch block
+			     e.printStackTrace();
+			   
+			      
+			     }
+			   if(qdisp<=rio) {
+			    return "\n La quantità di "+s+" è sotto il livello minimo. \n E'stato inviato un nuovo ordine di "+s;   }
+			   
+			   return "";
+			   
+			  }
+
+
+}

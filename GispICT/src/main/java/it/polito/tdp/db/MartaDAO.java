@@ -103,7 +103,7 @@ public class MartaDAO {
 		
 		String sql = "SELECT IDPharma,NamePharma, ExpDate " + 
 				"FROM magazzinoreparti " + 
-				"WHERE IDWard=? AND ExpDate>'2020-05-31' AND ExpDate < '2020-07-01' ";
+				"WHERE IDWard=? AND ExpDate>'2020-06-30' AND ExpDate < '2020-07-31' ";
 	
 		Connection conn = DBConnectionMarta.getConnection() ;
 		

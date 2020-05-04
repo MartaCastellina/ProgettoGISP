@@ -14,14 +14,14 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="58.0" layoutY="102.0" text="Expiring medications in June 2020:" AnchorPane.bottomAnchor="217.0" AnchorPane.topAnchor="102.0">
+      <Label layoutX="58.0" layoutY="102.0" text="Expiring medications in July 2020:" AnchorPane.bottomAnchor="217.0" AnchorPane.topAnchor="102.0">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
       <TextArea fx:id="txtElenco" editable="false" layoutX="58.0" layoutY="137.0" prefHeight="160.0" prefWidth="336.0" AnchorPane.bottomAnchor="50.0" AnchorPane.topAnchor="137.0" />
       <Button fx:id="btnBack" layoutX="341.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleGoBack" text="Go back" />
-      <ComboBox fx:id="cmbWard" layoutX="58.0" layoutY="76.0" onAction="#popolaTxt" prefWidth="150.0" />
+      <ComboBox fx:id="cmbWard" layoutX="58.0" layoutY="64.0" onAction="#popolaTxt" prefWidth="150.0" />
       <Label layoutX="58.0" layoutY="46.0" text="Select the ward:" />
    </children>
 </AnchorPane>

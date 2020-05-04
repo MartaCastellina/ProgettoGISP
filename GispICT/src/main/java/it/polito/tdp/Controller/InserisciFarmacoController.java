@@ -16,7 +16,7 @@ import it.polito.tdp.GispICT.Farmaco;
 import it.polito.tdp.GispICT.FarmacoNelReparto;
 import it.polito.tdp.GispICT.MartaModel;
 import it.polito.tdp.GispICT.Reparto;
-
+import it.polito.tdp.db.MartaDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +33,7 @@ import javafx.stage.Stage;
 
 public class InserisciFarmacoController {
 	private MartaModel model;
-	
+	MartaDAO dao=new MartaDAO();  
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -72,7 +72,7 @@ public class InserisciFarmacoController {
     void handleConfirm(ActionEvent event) throws IOException {
     	   	
     	Reparto repartoSelezionato=(Reparto) comboReparti.getValue();
-    	    	
+    	  	
     	
     	try {
 
@@ -160,7 +160,7 @@ public class InserisciFarmacoController {
     }
     void setCombo() {
     	List reparti=new ArrayList <Reparto>();
-    	reparti=model.getAllReparti();
+    	reparti=dao.listaReparti();
     	comboReparti.getItems().addAll(reparti);
     	
     }
@@ -177,7 +177,9 @@ public class InserisciFarmacoController {
          assert btnConfirm != null : "fx:id=\"btnConfirm\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
          assert allertText != null : "fx:id=\"allertText\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
          assert btnVerifica != null : "fx:id=\"btnVerifica\" was not injected: check your FXML file 'InserisciFarmaco.fxml'.";
+         setCombo();
     }
+    /*
 
 	public void setModel(MartaModel model) {
 		this.model=new MartaModel(); 
@@ -186,4 +188,5 @@ public class InserisciFarmacoController {
          setCombo(); //Il problema è questo quando faccio passaggio da una pag all'altra per tornare indietro
 		
 	}
+	*/
 }
