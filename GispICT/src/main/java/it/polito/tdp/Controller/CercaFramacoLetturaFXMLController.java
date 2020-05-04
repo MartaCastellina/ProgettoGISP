@@ -1,4 +1,4 @@
-package it.polito.tdp.Controller;
+package it.polito.tdp.GispICT;
 
 
 import java.net.URL;
@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import it.polito.tdp.GispICT.FarmacoNelReparto;
-import it.polito.tdp.db.LedaDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
