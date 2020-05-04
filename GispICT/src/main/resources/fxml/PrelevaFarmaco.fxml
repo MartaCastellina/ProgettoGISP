@@ -34,6 +34,6 @@
       <ComboBox fx:id="Menureparti" layoutX="30.0" layoutY="119.0" onAction="#Selezionafarmaco" prefHeight="25.0" prefWidth="299.0" />
       <ComboBox fx:id="MenuQuantita" layoutX="149.0" layoutY="189.0" onAction="#selQuantita" prefHeight="25.0" prefWidth="66.0" />
       <Text fx:id="quantitadesiderata" layoutX="96.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selezionare la quantità desiderata" wrappingWidth="208.779296875" />
-      <Text fx:id="conferma" layoutX="77.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="261.0000007301569" />
+      <Text fx:id="conferma" layoutX="25.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="JUSTIFY" wrappingWidth="351.0000007301569" />
     </children>
 </AnchorPane>
