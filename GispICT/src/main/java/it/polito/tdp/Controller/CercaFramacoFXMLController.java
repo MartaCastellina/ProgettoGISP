@@ -2,9 +2,8 @@
  * Sample Skeleton for 'CercaFarmaco.fxml' Controller Class
  */
 
-package it.polito.tdp.Controller;
-import it.polito.tdp.GispICT.FarmacoNelReparto;
-import it.polito.tdp.db.LedaDAO;
+package it.polito.tdp.GispICT;
+import it.polito.tdp.GispICT.LedaDAO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +16,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ComboBoxBaseBuilder;
@@ -122,7 +123,7 @@ public class CercaFramacoFXMLController {
     void handleInviaAction(ActionEvent event) {
     Leda.decrementa(getTemp(),(int) MenuQuantita.getValue());
     MenuQuantita.getItems().clear();
-    conferma.setText("Prelievo effettuato");
+    conferma.setText("Prelievo effettuato"+Leda.riordino(temp.getNomeF()));
     Invia.setVisible(false);
     Ricerca.clear();
    
@@ -131,6 +132,7 @@ public class CercaFramacoFXMLController {
     void setMenuReparti(String s) {
     	List farmaci= new ArrayList<FarmacoNelReparto>();
         farmaci=Leda.listaReparti(s);
+        Collections.sort(farmaci);
         Menureparti.getItems().addAll(farmaci);
         }
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -158,4 +160,5 @@ public class CercaFramacoFXMLController {
 	public void setQtemp(int qtemp) {
 		Qtemp = qtemp;
 	}
+
 }
