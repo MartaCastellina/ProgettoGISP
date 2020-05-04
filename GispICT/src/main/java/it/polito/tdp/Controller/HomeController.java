@@ -61,11 +61,12 @@ public class HomeController {
     	Scene secondaSchermataScene=new Scene(secondaSchermataParent);
     	//Accediamo al controller e chiamiamo metodo, prende il controller da Scene2
     	InserisciFarmacoController controller= loader.getController();
-    	//controller.setModel(this.model);  QUI ERA IL PROBLEMA 
+    	//controller.setModel(this.model);  QUI ERA IL PROBLEMA che non faceva tornare indietro 
     	
     	//Questa riga prende le informazioni dello stage
     	Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
     	window.setScene(secondaSchermataScene);
+    	
     	window.show();
     	
     
